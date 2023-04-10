@@ -1,6 +1,7 @@
 app-admin/eclean-kernel
 app-admin/sudo
 app-admin/sysklogd
+app-backup/timeshift
 app-benchmarks/geekbench
 app-editors/nano
 app-editors/neovim
@@ -66,6 +67,7 @@ net-analyzer/iptraf-ng
 net-im/deepin-wine-wechat
 net-im/telegram-desktop
 net-im/tencent-qq
+net-misc/proxychains
 net-proxy/clash-for-windows-bin
 sys-apps/exa
 sys-apps/fd

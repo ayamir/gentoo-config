@@ -1,2 +1,10 @@
 #!/usr/bin/env bash
-/usr/bin/python3 ~/.local/bin/player_notification.py
+
+set -e
+source $HOME/.local/bin/pypkg/bin/activate
+
+if ! pgrep -f "player_notification"; then
+	/usr/bin/python3 ~/.local/bin/player_notification.py
+else
+	echo "player_notification already running"
+fi

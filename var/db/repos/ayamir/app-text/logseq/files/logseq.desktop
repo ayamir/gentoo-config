@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Logseq
+Comment=Logseq
+Exec=/opt/logseq/Logseq
+Icon=logseq
+Terminal=false
+Keywords=logseq
+Categories=Office;

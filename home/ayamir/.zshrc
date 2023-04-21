@@ -1,5 +1,6 @@
 #! /bin/zsh
 SHELL=$(which zsh || echo '/bin/zsh')
+ZSHOME=$HOME/.zsh
 
 setopt autocd              # change directory just by typing its name
 setopt interactivecomments # allow comments in interactive mode
@@ -47,9 +48,11 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 
 # source plugins
-source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh
-source /usr/share/fzf/key-bindings.zsh
+source $ZSHOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSHOME/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $ZSHOME/fzf/key-bindings.zsh
+source $ZSHOME/zsh-abbr/zsh-abbr.zsh
+source $ZSHOME/nvm/zsh-nvm.plugin.zsh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
 
@@ -73,42 +76,43 @@ mcd () {
 }
 
 # alias
-alias vz='nvim ~/.zshrc'
-alias sz='source ~/.zshrc'
-alias v='nvim'
-alias vi='vim'
-alias nv='nvim'
-alias ne='fastfetch'
-alias mtar='tar -zcvf' # mtar <archive_compress>
-alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
-alias ..="cd .."
-alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
-alias mkdir="mkdir -p"
-alias ra='ranger'
-alias wifi="nmtui-connect"
-alias ls="exa --color=auto --icons"
-alias l="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lt="ls --tree"
-alias cat="bat --color always --plain"
-alias grep='grep --color=auto'
-alias mv='mv -v'
-alias cp='cp -vr'
-alias ins='sudo emerge'
-alias insnr='sudo emerge --noreplace'
-alias uins='sudo emerge --depclean'
-alias up='sudo emerge -quvDN @world'
-alias fl='sudo flaggie'
-alias stlsa='sudo systemctl start'
-alias stlre='sudo systemctl restart'
-alias stlst='sudo systemctl stop'
-alias stlsu='sudo systemctl status'
-alias stlen='sudo systemctl enable'
-alias stldis='sudo systemctl disable'
-alias og='git-open'
-alias lg='lazygit'
-alias mf='musicfox'
+# alias vz='nvim ~/.zshrc'
+# alias sz='source ~/.zshrc'
+# alias v='nvim'
+# alias vi='vim'
+# alias nv='nvim'
+# alias ne='fastfetch'
+# alias mtar='tar -zcvf' # mtar <archive_compress>
+# alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
+# alias ..="cd .."
+# alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
+# alias mkdir="mkdir -p"
+# alias ra='ranger'
+# alias wifi="nmtui-connect"
+# alias ls="exa --color=auto --icons"
+# alias l="ls -l"
+# alias la="ls -a"
+# alias lla="ls -la"
+# alias lt="ls --tree"
+# alias cat="bat --color always --plain"
+# alias grep='grep --color=auto'
+# alias mv='mv -v'
+# alias cp='cp -vr'
+# alias ins='sudo emerge'
+# alias insnr='sudo emerge --noreplace'
+# alias uins='sudo emerge --depclean'
+# alias up='sudo emerge -quvDN @world'
+# alias fl='sudo flaggie'
+# alias stlsa='sudo systemctl start'
+# alias stlre='sudo systemctl restart'
+# alias stlst='sudo systemctl stop'
+# alias stlsu='sudo systemctl status'
+# alias stlen='sudo systemctl enable'
+# alias stldis='sudo systemctl disable'
+# alias og='git-open'
+# alias lg='lazygit'
+# alias mf='musicfox'
 
 # init starship
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"

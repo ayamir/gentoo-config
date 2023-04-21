@@ -3,11 +3,10 @@ and not set -q TMUX
     exec tmux -u new -A -D -t f4h
 end
 
-if status is-interactive
-    nvm use 16
-end
 fish_vi_key_bindings
 set -g fish_greeting
+
+set -u nvm_default_version v16.20.0
 
 set -gx XDG_CONFIG_HOME "/home/ayamir/.config"
 set -gx EDITOR nvim

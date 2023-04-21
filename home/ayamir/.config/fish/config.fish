@@ -12,17 +12,15 @@ set -g fish_greeting
 set -gx XDG_CONFIG_HOME "/home/ayamir/.config"
 set -gx EDITOR nvim
 set -gx LANG en_US.UTF-8
-set -U SXHKD_SHELL /usr/bin/bash
-set -gx LOCAL_BIN /home/ayamir/.local/bin
-set -gx CARGO_BIN /home/ayamir/.cargo/bin
-set -gx PATH $LOCAL_BIN $CARGO_BIN $PATH
+
+set -gx http_proxy "http://127.0.0.1:7890"
+set -gx https_proxy "http://127.0.0.1:7890"
+set -gx all_proxy "http://127.0.0.1:7890"
 
 if status --is-interactive
 	# Envs
-	set -gx http_proxy "http://127.0.0.1:7890"
-	set -gx https_proxy "http://127.0.0.1:7890"
-	set -gx all_proxy "http://127.0.0.1:7890"
-	
+	abbr --add --global vc "cd ~/.config/awesome; nvim ./rc.lua"
+    
 	abbr --add --global .. "cd ./.."
 	abbr --add --global ... "cd ./../.."
 	abbr --add --global .... "cd ./../../.."
@@ -86,7 +84,7 @@ if status --is-interactive
 	abbr --add --global reb "sudo reboot"
 	abbr --add --global :q "exit"
 
-	abbr --add --global hugo "hugo --enableGitInfo"
+    abbr --add --global hugo "hugo --enableGitInfo"
 	abbr --add --global pb "hugo && hugo-algolia -s"
 	abbr --add --global md "devour typora"
 	abbr --add --global jn "jupyter notebook"
@@ -95,6 +93,7 @@ if status --is-interactive
 end
 
 zoxide init fish | source
+starship init fish | source
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

@@ -38,9 +38,9 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
 
 # History configurations
-HISTFILE="$HOME/.cache/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=20000
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=2000000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
@@ -48,18 +48,15 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt share_history          # share command history data
 
 # source plugins
+source $ZSHOME/zlefix.zsh
 source $ZSHOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSHOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSHOME/fzf/key-bindings.zsh
 source $ZSHOME/zsh-abbr/zsh-abbr.zsh
 source $ZSHOME/nvm/zsh-nvm.plugin.zsh
 
+# set highlight style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484E5B,underline"
-
-# tty
-if [ "$TERM" = "linux" ] ; then
-    echo -en "\e]P0232323"
-fi
 
 # custom function
 toppy() {
@@ -73,6 +70,37 @@ cd() {
 mcd () {
     mkdir -p $1
     cd $1
+}
+
+n ()
+{
+    # Block nesting of nnn in subshells
+    if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+        echo "nnn is already running"
+        return
+    fi
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The backslash allows one to alias n to nnn if desired without making an
+    # infinitely recursive alias
+    \nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
 }
 
 # alias

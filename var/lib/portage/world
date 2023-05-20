@@ -8,6 +8,7 @@ app-crypt/gcr
 app-crypt/seahorse
 app-editors/nano
 app-editors/neovim
+app-editors/typora::ayamir
 app-editors/vim
 app-editors/vscode
 app-eselect/eselect-repository
@@ -22,18 +23,20 @@ app-misc/dragon
 app-misc/fastfetch
 app-misc/gpick
 app-misc/handlr
-app-misc/nnn
+app-misc/picgo
 app-misc/ranger
 app-misc/resolve-march-native
+app-misc/solaar
 app-misc/tmux
 app-misc/wayland-utils
+app-office/wps-office
+app-office/wps-office::benzene-overlay
 app-portage/cpuid2cpuflags
 app-portage/diffmask
 app-portage/eix
 app-portage/flaggie
 app-portage/genlop
 app-portage/gentoolkit
-app-portage/layman
 app-portage/mirrorselect
 app-portage/portpeek
 app-portage/smart-live-rebuild
@@ -64,6 +67,7 @@ dev-qt/qtstyleplugins
 dev-util/cargo-ebuild
 dev-util/ccache
 dev-util/github-cli
+dev-util/jetbrains-toolbox
 dev-util/pkgdev
 dev-util/sccache
 dev-util/strace
@@ -111,6 +115,7 @@ net-dns/smartdns
 net-im/deepin-wine-wechat
 net-im/telegram-desktop-bin
 net-im/tencent-qq
+net-im/wemeet::benzene-overlay
 net-misc/proxychains
 net-proxy/clash-for-windows-bin
 sys-apps/accountsservice
@@ -123,6 +128,7 @@ sys-apps/pciutils
 sys-apps/ripgrep
 sys-apps/systemd
 sys-apps/usbutils
+sys-apps/yarn
 sys-auth/rtkit
 sys-devel/binutils
 sys-devel/gdb
@@ -148,8 +154,8 @@ sys-process/nmon
 virtual/linux-sources
 virtual/notification-daemon
 www-apps/hugo
-www-client/firefox
 www-client/google-chrome
+www-client/vivaldi
 www-client/w3m
 www-servers/nginx
 x11-apps/mesa-progs

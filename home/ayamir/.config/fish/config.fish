@@ -3,10 +3,11 @@ and not set -q TMUX
     exec tmux -u new -A -D -t f4h
 end
 
+if status is-interactive
+    nvm use 16
+end
 fish_vi_key_bindings
 set -g fish_greeting
-
-set -u nvm_default_version v16.20.0
 
 set -gx XDG_CONFIG_HOME "/home/ayamir/.config"
 set -gx EDITOR nvim
@@ -27,7 +28,7 @@ if status --is-interactive
 	abbr --add --global vf "nvim ~/.config/fish/config.fish"
 	abbr --add --global sf "source ~/.config/fish/config.fish"
 
-	abbr --add --global ls "exa"
+	abbr --add --global ls "exa --icons"
 	abbr --add --global l "exa -l --color=auto"
 	abbr --add --global la "exa -alh --color=auto"
 	abbr --add --global tree "exa -T"
@@ -40,6 +41,7 @@ if status --is-interactive
 	abbr --add --global insnr "sudo emerge --noreplace"
 	abbr --add --global uins "sudo emerge --depclean"
 	abbr --add --global up "sudo emerge -quvDN @world"
+    abbr --add --global fl "sudo flaggie"
 
 	abbr --add --global stlsa "sudo systemctl start"
 	abbr --add --global stlst "sudo systemctl stop"
@@ -56,6 +58,9 @@ if status --is-interactive
 	abbr --add --global gm "git commit -m"
 	abbr --add --global gps "git push"
 	abbr --add --global gpl "git pull"
+
+    abbr --add --global mv "mv -v"
+    abbr --add --global cp "cp -vr"
 
 	abbr --add --global load "kill -USR1 (pidof st)"
 	abbr --add --global use "xrdb merge"
@@ -84,7 +89,7 @@ if status --is-interactive
 	abbr --add --global :q "exit"
 
     abbr --add --global hugo "hugo --enableGitInfo"
-	abbr --add --global pb "hugo && hugo-algolia -s"
+    abbr --add --global pb "hugo --enableGitInfo && hugo-algolia -s"
 	abbr --add --global md "devour typora"
 	abbr --add --global jn "jupyter notebook"
 

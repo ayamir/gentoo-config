@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=X11 window swallower
+EAPI=8
+HOMEPAGE=https://github.com/salman-abedin/devour
+INHERIT=git-r3 desktop
+IUSE=shellalias
+KEYWORDS=~amd64
+LICENSE=GPL-2.0
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676	desktop	021728fdc1b03b36357dbc89489e0f0d
+_md5_=63ff20157b6e5e6a817e787db4aa8d9d
